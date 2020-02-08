@@ -9,6 +9,13 @@ class FactsController < ApplicationController
   def index
   end
 
+  def show
+    @fact = Fact.find_by_id(params[:id])
+    if @fact.blank?
+      render plain: 'Not Found :(', status: :not_found
+    end
+  end
+
   def create
     @fact = current_user.facts.create(fact_params)
     if @fact.valid?

@@ -1,6 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe FactsController, type: :controller do
+  describe "facts#show action" do
+    it "should successfully show the page if the fact is found" do
+      fact = FactoryBot.create(:fact)
+      get :show, params: { id: fact.id }
+      expect(response).to have_http_status(:success)
+    end
+
+    it "should return a 404 error if the fact is not found" do
+      get :show, params: { id: 'RANDOM' }
+      expect(response).to have_http_status(:not_found)
+    end
+  end
+
+
+
   describe "facts#index action" do
     it "should successfully show the page" do
       get :index
