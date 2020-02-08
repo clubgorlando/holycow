@@ -1,4 +1,7 @@
 class FactsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
+
   def new
     @fact = Fact.new
   end
@@ -7,7 +10,7 @@ class FactsController < ApplicationController
   end
 
   def create
-    @fact = Fact.create(fact_params)
+    @fact = current_user.facts.create(fact_params)
     if @fact.valid?
       redirect_to facts_path
     else
