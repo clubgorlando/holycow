@@ -23,6 +23,12 @@ RSpec.describe FactsController, type: :controller do
       fact = Fact.last
       expect(fact.message).to eq("This statement is a fact!")
     end
+
+    it "should properly deal with validation errors" do
+      post :create, params: { fact: { message: '' } }
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(Fact.count).to eq 0
+    end
   end
 
 end

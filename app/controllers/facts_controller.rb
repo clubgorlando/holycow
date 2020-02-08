@@ -8,7 +8,11 @@ class FactsController < ApplicationController
 
   def create
     @fact = Fact.create(fact_params)
-    redirect_to facts_path
+    if @fact.valid?
+      redirect_to facts_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
