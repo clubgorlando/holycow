@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
   root "static_pages#index"
-  resources :facts, only: [:new, :create, :index, :show]
+  resources :facts, only: [:new, :create, :index, :show, :destroy]
 end

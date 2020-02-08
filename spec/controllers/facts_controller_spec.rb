@@ -1,6 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe FactsController, type: :controller do
+  describe "facts#destroy action" do
+    it "should allow a user to destroy facts" do
+      fact = FactoryBot.create(:fact)
+      delete :destroy, params: { id: fact.id }
+      expect(response).to redirect_to facts_path
+      fact = Fact.find_by_id(fact.id)
+      expect(fact).to eq nil
+    end
+
+
+    it "should return a 404 message if we cannot find a fact with the id that is specified" do
+      delete :destroy, params: { id: 'RANDOMNESS' }
+      expect(response).to have_http_status(:not_found)
+    end
+  end
+
+
   describe "facts#show action" do
     it "should successfully show the page if the fact is found" do
       fact = FactoryBot.create(:fact)

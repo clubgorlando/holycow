@@ -1,6 +1,12 @@
 class FactsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
+  def destroy
+    @fact = Fact.find_by_id(params[:id])
+    return render_not_found if @fact.blank?
+    @fact.destroy
+    redirect_to facts_path
+  end
 
   def new
     @fact = Fact.new
@@ -11,9 +17,7 @@ class FactsController < ApplicationController
 
   def show
     @fact = Fact.find_by_id(params[:id])
-    if @fact.blank?
-      render plain: 'Not Found :(', status: :not_found
-    end
+    return render_not_found if @fact.blank?
   end
 
   def create
@@ -29,6 +33,10 @@ class FactsController < ApplicationController
 
   def fact_params
     params.require(:fact).permit(:message)
+  end
+
+  def render_not_found
+    render plain: 'Not Found :(', status: :not_found
   end
 
 end
