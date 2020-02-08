@@ -2,8 +2,23 @@ require 'rails_helper'
 
 RSpec.describe FactsController, type: :controller do
   describe "facts#destroy action" do
+    it "shouldn't allow users who didn't create the fact to destroy it" do
+      fact = FactoryBot.create(:fact)
+      user = FactoryBot.create(:user)
+      sign_in user
+      delete :destroy, params: { id: fact.id }
+      expect(response).to have_http_status(:forbidden)
+    end
+
+    it "shouldn't let unauthenticated users destroy a fact" do
+      fact = FactoryBot.create(:fact)
+      delete :destroy, params: { id: fact.id }
+      expect(response).to redirect_to new_user_session_path
+    end
+
     it "should allow a user to destroy facts" do
       fact = FactoryBot.create(:fact)
+      sign_in fact.user
       delete :destroy, params: { id: fact.id }
       expect(response).to redirect_to facts_path
       fact = Fact.find_by_id(fact.id)
@@ -12,6 +27,8 @@ RSpec.describe FactsController, type: :controller do
 
 
     it "should return a 404 message if we cannot find a fact with the id that is specified" do
+      user = FactoryBot.create(:user)
+      sign_in user
       delete :destroy, params: { id: 'RANDOMNESS' }
       expect(response).to have_http_status(:not_found)
     end

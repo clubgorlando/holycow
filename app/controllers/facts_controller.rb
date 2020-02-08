@@ -1,9 +1,12 @@
 class FactsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :destroy]
 
   def destroy
     @fact = Fact.find_by_id(params[:id])
     return render_not_found if @fact.blank?
+    if @fact.user != current_user
+      return render plain: 'Forbidden :(', status: :forbidden
+    end
     @fact.destroy
     redirect_to facts_path
   end
