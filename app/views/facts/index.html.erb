@@ -8,6 +8,8 @@
   <% @facts.each do |fact| %>
     <div class="booyah-box">
       <p><%= fact.message %></p>
+      <p><%= fact.likes.count %> <%= (fact.likes.count) == 1 ? 'Like' : 'Likes' %></p>
+      <%= button_to 'HOLY COW!', fact_likes_path(fact), method: :post %>
     </div>
   <% end %>
 
