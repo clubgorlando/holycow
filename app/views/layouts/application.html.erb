@@ -14,7 +14,7 @@
       <div class="col"></div>
 
       <div class="col" id="brand">
-        Holy Cow!
+        <%= link_to "HOLY COW!!", root_path %>
       </div>
 
       <div class="col">
@@ -37,13 +37,21 @@
     </div>
 
     <% if notice.present? %>
-      <p class="notice"><%= notice %></p>
+      <p class="alert alert-info"><%= notice %></p>
+    <% end %>
+    <% if alert.present? %>
+      <p class="alert alert-danger"><%= alert %></p>
     <% end %>
 
-    <% if alert.present? %>
-      <p class="alert"><%= alert %></p>
-    <% end %>
+    <div class="booyah-box" id="hero">
+     <h1>HOLY COW!</h1>
+    </div>
+
+    <br />
+    
+
         
     <%= yield %>
+ 
   </body>
 </html>

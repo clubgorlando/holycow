@@ -16,6 +16,7 @@ class FactsController < ApplicationController
   end
 
   def index
+    @facts = Fact.all
   end
 
   def show
@@ -35,7 +36,7 @@ class FactsController < ApplicationController
   private
 
   def fact_params
-    params.require(:fact).permit(:message)
+    params.require(:fact).permit(:message, :holycows, :cowpies)
   end
 
   def render_not_found

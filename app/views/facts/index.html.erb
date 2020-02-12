@@ -1,1 +1,14 @@
-<h1>Facts</h1>
+<div class="booyah-box">
+
+  <h1>
+    Facts 
+    <%= link_to 'Add a Fact!', new_fact_path, class: 'btn btn-success' %>
+  </h1>
+
+  <% @facts.each do |fact| %>
+    <div class="booyah-box">
+      <p><%= fact.message %></p>
+    </div>
+  <% end %>
+
+</div>
