@@ -5,12 +5,10 @@ class LikesController < ApplicationController
   def create
     if already_liked?
       flash[:notice] = "You can't give more than one HOLYCOW!"
-      redirect_to root_path
     else
       @fact.likes.create(user_id: current_user.id)
-      redirect_to root_path
     end
-    redirect_to root_path
+    redirect_to facts_path
   end
 
   private
