@@ -10,8 +10,12 @@
       <p><%= fact.message %></p>
       <p>
         <%= fact.likes.count %> <%= (fact.likes.count) == 1 ? 'Like' : 'Likes' %>
+         - 
+        <%= fact.dislikes.count %> <%= (fact.dislikes.count) == 1 ? 'Dislike' : 'Dislikes' %>
       </p>
       <%= button_to 'HOLY COW!', fact_likes_path(fact), method: :post %>
+      "  "
+      <%= button_to 'COWPIE!', fact_dislikes_path(fact), method: :post %>
     </div>
   <% end %>
 
