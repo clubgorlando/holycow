@@ -4,7 +4,7 @@ class DislikesController < ApplicationController
 
   def create
     if already_disliked?
-      flash[:notice] = "You can't dislike more than once"
+      flash[:notice] = "You can't give more than one COWPIE!"
     else
       @fact.dislikes.create(user_id: current_user.id)
     end

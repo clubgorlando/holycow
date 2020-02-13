@@ -1,25 +1,29 @@
-<div class="booyah-box">
-  <div class="row">
+<div class="booyah-box" id="hero">
+  HOLY COW!
+  <br />
+  <p>
+    This is a simple web app with a simple purpose - view facts / add facts / rate facts.
+  </p>
+</div>
 
-    <div class="col feature booyah-box">
-      feature 1
-    </div>
+<div class="row">
 
-    <div class="col feature booyah-box">
-      <% if current_user %>
-        <%= link_to 'View Facts', facts_path, class: 'btn btn-success' %>
-        <br />
-        <%= link_to 'Add a Fact!', new_fact_path, class: 'btn btn-success' %>
-      <% else %>
-        Please <%= link_to "Sign In", new_user_session_path %>
-        or <%= link_to "Sign Up", new_user_registration_path %>
-        to continue
-      <% end %>
-    </div>
-
-    <div class="col feature booyah-box">
-      feature 3
-    </div>
-
+  <div class="col feature booyah-box">
+    If a fact is interesting then hit it with a HOLY COW!
   </div>
+
+  <div class="col feature booyah-box">
+    <% if current_user %>
+      <%= link_to 'View Facts', facts_path, class: 'btn btn-success' %> <%= link_to 'Add a Fact!', new_fact_path, class: 'btn btn-success' %>
+    <% else %>
+      Please <%= link_to "Sign In", new_user_session_path %>
+      or <%= link_to "Sign Up", new_user_registration_path %>
+      to view or add facts!
+    <% end %>
+  </div>
+
+  <div class="col feature booyah-box">
+    If a fact is pretty lame then hit it with a COWPIE!
+  </div>
+
 </div>

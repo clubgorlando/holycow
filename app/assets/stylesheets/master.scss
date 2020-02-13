@@ -1,15 +1,41 @@
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Modak|Source+Sans+Pro&display=swap');
 
 #top-nav {
   text-align: center;
+  vertical-align: middle;
+  max-width: 1024px;
+  margin: auto;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+    background: image_url('hero.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 1000px;
 }
 
 #brand {
   text-align: left;
+  font-size: 40px;
 }
 
 #logins {
   text-align: right;
+  vertical-align: middle;
+  font-size: 40px;
+}
+
+#user {
+  text-align: center;
+  vertical-align: middle;
+  padding: auto;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 20px;
+
 }
 
 .booyah-box {
@@ -19,16 +45,38 @@
   background: #fff;
   border: 1px solid #ccc;
   border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
-  margin: 15px;
-  padding: 20px;
+  margin: 5px;
+  padding: 10px;
+}
+
+.mainApp {
+  max-width: 1024px;
+  margin: auto;
 }
 
 #hero {
   text-align: center;
+  font-family: 'Modak', cursive;
+  max-width: 1024px;
+  padding: 5px;
+  background-color: #d2fcc2;
+  font-size: 112px;
+  margin: auto;
+}
+
+#hero p {
+  font-size: 20px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+#indexPage {
+  max-width: 1024px;
 }
 
 .feature {
   text-align: center;
+  background-color: #d2fcc2;
+  padding: auto;
 }
 
 .btn {
