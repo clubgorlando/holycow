@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_12_181931) do
+ActiveRecord::Schema.define(version: 2020_02_12_224217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cowpies", force: :cascade do |t|
+    t.bigint "fact_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fact_id"], name: "index_cowpies_on_fact_id"
+    t.index ["user_id"], name: "index_cowpies_on_user_id"
+  end
 
   create_table "facts", force: :cascade do |t|
     t.text "message"
@@ -46,6 +55,8 @@ ActiveRecord::Schema.define(version: 2020_02_12_181931) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cowpies", "facts"
+  add_foreign_key "cowpies", "users"
   add_foreign_key "likes", "facts"
   add_foreign_key "likes", "users"
 end

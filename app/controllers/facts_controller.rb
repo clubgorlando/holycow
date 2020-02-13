@@ -36,7 +36,7 @@ class FactsController < ApplicationController
   private
 
   def fact_params
-    params.require(:fact).permit(:message, :holycows, :cowpies)
+    params.require(:fact).permit(:message)
   end
 
   def render_not_found

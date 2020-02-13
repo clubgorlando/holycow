@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
   before_action :find_fact
-  before_action :authenticate_user!, only: [:new, :create, :destroy]
+  before_action :authenticate_user!
 
   def create
     if already_liked?
