@@ -50,6 +50,19 @@ body {
   padding: 10px;
 }
 
+.booyah-box .fact {
+  max-width: 500px;
+  margin: auto;
+  margin-top: 5px;
+}
+
+.factsPage {
+  max-width: 550px;
+  margin: auto;
+  text-align: center;
+  background-color: #d2fcc2;
+}
+
 .mainApp {
   max-width: 1024px;
   margin: auto;
@@ -82,4 +95,8 @@ body {
 
 .btn {
   margin: 10px;
+}
+
+.message {
+  font-size: 30px;
 }

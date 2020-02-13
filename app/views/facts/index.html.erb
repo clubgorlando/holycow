@@ -1,4 +1,4 @@
-<div class="booyah-box">
+<div class="booyah-box factsPage">
 
   <h1>
     Facts 
@@ -6,16 +6,14 @@
   </h1>
 
   <% @facts.each do |fact| %>
-    <div class="booyah-box">
-      <p><%= fact.message %></p>
+    <div class="booyah-box fact">
+      <p class="message"><%= fact.message %></p>
       <p>
-        <%= fact.likes.count %> <%= (fact.likes.count) == 1 ? 'Like' : 'Likes' %>
+        <%= fact.likes.count %> <%= (fact.likes.count) == 1 ? 'HOLY COW!' : 'HOLY COWS!' %>
          - 
-        <%= fact.dislikes.count %> <%= (fact.dislikes.count) == 1 ? 'Dislike' : 'Dislikes' %>
+        <%= fact.dislikes.count %> <%= (fact.dislikes.count) == 1 ? 'COWPIE' : 'COWPIES' %>
       </p>
-      <%= button_to 'HOLY COW!', fact_likes_path(fact), method: :post %>
-      "  "
-      <%= button_to 'COWPIE!', fact_dislikes_path(fact), method: :post %>
+      <%= button_to 'HOLY COW!', fact_likes_path(fact), method: :post %> <%= button_to 'COWPIE!', fact_dislikes_path(fact), method: :post %>
     </div>
   <% end %>
 
